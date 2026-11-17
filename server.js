@@ -4,12 +4,14 @@ require("dotenv").config();
 const express = require("express");
 const { connectToDatabase } = require("./config/database");
 const booksRoutes = require("./routes/books");
+const authorsRoutes = require("./routes/authors");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/books", booksRoutes);
+app.use("/authors", authorsRoutes);
 
 const startServer = async () => {
   try {
